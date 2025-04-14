@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Peixe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 80%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultado {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Valor por Quilo</h1>
+    <input type="number" id="peso" placeholder="Peso do peixe (kg)" step="0.01"><br>
+    <input type="number" id="valor" placeholder="Valor total (moedas)" step="0.01"><br>
+    <button id="calcularBtn">Calcular</button>
+    <div id="resultado"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const botao = document.getElementById('calcularBtn');
+            botao.addEventListener('click', function () {
+                const peso = parseFloat(document.getElementById('peso').value);
+                const valor = parseFloat(document.getElementById('valor').value);
+                const resultado = document.getElementById('resultado');
+
+                if (isNaN(peso) || isNaN(valor) || peso <= 0) {
+                    resultado.innerHTML = "Por favor, insira valores válidos.";
+                    return;
+                }
+
+                const valorPorQuilo = valor / peso;
+                resultado.innerHTML = "Valor por quilo: " + valorPorQuilo.toFixed(2) + " moedas";
+            });
+        });
+    </script>
+</body>
+</html>
